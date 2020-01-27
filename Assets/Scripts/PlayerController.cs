@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
         input_vector = new Vector2(horizontal, vertical);
     }
 
+    // TODO: (Leandro) Maybe we don't need this effect on the turning since it's going to be sprite based? Just pointing to the correct direction should be fine.
     private void FaceDirection()
     {
         if (is_moving)
