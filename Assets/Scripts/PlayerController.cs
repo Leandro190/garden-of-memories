@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
         movement_vector.x = Input.GetAxisRaw("Horizontal");
         movement_vector.y = Input.GetAxisRaw("Vertical");
 
+        if (movement_vector.x != 0) { movement_vector.y = 0; }
+        if (movement_vector.y != 0) { movement_vector.x = 0; }
         is_moving = movement_vector.x != 0 || movement_vector.y != 0;
 
         if (Input.GetButtonDown("Run")) { isWalking = false;}
