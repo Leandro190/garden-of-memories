@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rope : MonoBehaviour
+public class Rope2 : MonoBehaviour
 {
     [SerializeField] GameObject ropeBase;
     [SerializeField] GameObject player;
@@ -20,6 +20,8 @@ public class Rope : MonoBehaviour
     {
         pointA = ropeBase.GetComponent<Transform>();
         pointB = player.GetComponent<Transform>();
+
+        transform.position = pointA.position;
         rope = GetComponent<LineRenderer>();
         hits = new List<Transform>();
     }
@@ -32,8 +34,7 @@ public class Rope : MonoBehaviour
 
     private void DrawRope()
     {
-        rope.SetPosition(0, player.transform.position);
-        //rope.SetPosition(0, player.transform.position);
+        SetRopePosition(0, player.transform.position);
     }
 
     //private void OnCollisionEnter(Collision collision)
@@ -44,27 +45,38 @@ public class Rope : MonoBehaviour
     //        rope.SetPosition(2, player.transform.position);
     //    }
 
-        
+
     //}
 
     private void FindPoint()
     {
-        
-        
-        hit = Physics2D.Linecast(ropeBase.transform.position, player.transform.position);
-        
+        Vector3 lastTurn;
+        lastTurn = (hits.Count == 0) ? pointA.position : hits[obstacles - 2].transform.position;
+
+        hit = Physics2D.Linecast(lastTurn, player.transform.position);
+
+        Debug.DrawLine(lastTurn, player.transform.position);
+
         if (hit && !hits.Contains(hit.transform))
         {
-            hits.Add(hit.collider.transform);
-            print("hit");
-            
-            rope.SetPosition(1, hits[obstacles - 1].position);
-            for (int i= 0; i< (obstacles - 1); i++)
+            hits.Add(hit.transform);
+            hit.collider.enabled = false;
+
+            SetRopePosition(1, hits[obstacles - 1].transform.position);
+
+            for (int i = 0; i < (obstacles - 1); i++)
             {
-                rope.SetPosition(obstacles-i, hits[i].position);
+                SetRopePosition(obstacles - i, hits[i].transform.position);
             }
 
             obstacles++;
+
         }
     }
+    private void SetRopePosition(int index, Vector2 position)
+    {
+        rope.SetPosition(index, new Vector2(position.x - pointA.position.x, position.y - pointA.position.y));
+    }
+
+    public int GetObstacles() { return obstacles; }
 }
