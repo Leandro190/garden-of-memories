@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Rope
+    uniqueID: 3775070635
+    locked: 0
+  - name: obstacles
+    uniqueID: 793304207
+    locked: 0
