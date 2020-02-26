@@ -10,7 +10,6 @@ public class PathFollower2D : MonoBehaviour
     public EndOfPathInstruction endOfPathInstruction;
     public float speed = 5;
     float distanceTravelled;
-    public float angleCorrection;
 
     void Start()
     {
@@ -28,8 +27,12 @@ public class PathFollower2D : MonoBehaviour
             distanceTravelled += speed * Time.deltaTime;
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
             Quaternion RotationAtDistance = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
-            print(RotationAtDistance.eulerAngles);
-            transform.rotation = Quaternion.Euler(0, 0, angleCorrection - RotationAtDistance.eulerAngles.x);
+            
+            Quaternion qt = Quaternion.Euler(0, 0, 360-RotationAtDistance.eulerAngles.x);
+
+            Debug.Log(qt.eulerAngles);
+
+            transform.rotation = qt;
         }
     }
 
