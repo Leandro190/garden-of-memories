@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-    [SerializeField] GameObject ropeBase;
     [SerializeField] GameObject player;
 
-    Transform pointA;
-    Transform pointB;
+    int position;
     LineRenderer rope;
     RaycastHit2D hit;
     List<Transform> hits;
 
     int obstacles = 1;
-    int decrement = 0;
+
+    float distanceFromHit;
+    float totalDistance;
 
     private void Start()
     {
-        pointA = ropeBase.GetComponent<Transform>();
-        pointB = player.GetComponent<Transform>();
+        position = 0;
+        distanceFromHit = 0;
+        totalDistance = 0;
         rope = GetComponent<LineRenderer>();
         hits = new List<Transform>();
     }
@@ -28,6 +29,8 @@ public class Rope : MonoBehaviour
     {
         DrawRope();
         FindPoint();
+        CalculateTotalLength();
+        CheckLimit();
     }
 
     private void DrawRope()
@@ -47,11 +50,39 @@ public class Rope : MonoBehaviour
         
     //}
 
+    private void CalculateLengthFromHit()
+    {
+        if (position == 0)
+        {
+            distanceFromHit += Vector2.Distance(hits[position].position, this.transform.position);
+        }
+        else
+        {
+            distanceFromHit += Vector2.Distance(hits[position].position, hits[position - 1].position);
+        }
+    }
+
+    private void CalculateTotalLength()
+    {
+        if (position > 0)
+        {
+            totalDistance = Vector2.Distance(player.transform.position, hits[position-1].position) + distanceFromHit;
+        }
+        
+        print(totalDistance);
+    }
+
+    private void CheckLimit()
+    {
+        if (totalDistance > 15f)
+        {
+            print("LIMIT");
+        }
+    }
+
     private void FindPoint()
     {
-        
-        
-        hit = Physics2D.Linecast(ropeBase.transform.position, player.transform.position);
+        hit = Physics2D.Linecast(this.transform.position, player.transform.position);
         
         if (hit && !hits.Contains(hit.transform))
         {
@@ -65,6 +96,10 @@ public class Rope : MonoBehaviour
             }
 
             obstacles++;
+
+            CalculateLengthFromHit();
+
+            position++;
         }
     }
 }
