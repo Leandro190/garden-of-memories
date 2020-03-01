@@ -27,12 +27,7 @@ public class PathFollower2D : MonoBehaviour
             distanceTravelled += speed * Time.deltaTime;
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
             Quaternion RotationAtDistance = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
-            
-            Quaternion qt = Quaternion.Euler(0, 0, 360-RotationAtDistance.eulerAngles.x);
-
-            Debug.Log(qt.eulerAngles);
-
-            transform.rotation = qt;
+            transform.rotation = RotationAtDistance;
         }
     }
 
