@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc6c509c06bda44e8ce76836c18cb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathCreator: {fileID: 7383378272915103476, guid: ef9ff1070d9fcd8409ef2fc0ffb42c1b,
-    type: 3}
+  pathCreator: {fileID: 0}
   endOfPathInstruction: 0
   speed: 5
 --- !u!1 &8247272458089489832
@@ -57,7 +56,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8247272458089489838}
-  - component: {fileID: 8247272458089489836}
   - component: {fileID: 8247272458089489839}
   - component: {fileID: 8247272458089489843}
   - component: {fileID: 8247272458089489837}
@@ -83,21 +81,6 @@ Transform:
   m_Father: {fileID: 8247272457773371964}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
---- !u!114 &8247272458089489836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8247272458089489832}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11b1a3f84757cc64a8eed16770aa78af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InsectAnimator: {fileID: 8247272458089489837}
-  InNest: {fileID: 0}
-  OutNest: {fileID: 0}
 --- !u!212 &8247272458089489839
 SpriteRenderer:
   m_ObjectHideFlags: 0
