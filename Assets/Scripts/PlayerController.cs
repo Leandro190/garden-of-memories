@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     public int allowed_to_move;
 
+    Vector2 previousPosition;
+
     // References to other components (can be from other game objects!)
     Animator animator;
     Rigidbody2D rb;
@@ -52,17 +54,55 @@ public class PlayerController : MonoBehaviour
         //grab_pressed = false;
 
         MoveCharacter();
-
-
     }
 
     private void HandleInput()
     {
+        
         movement_vector.x = Input.GetAxisRaw("Horizontal");
         movement_vector.y = Input.GetAxisRaw("Vertical");
 
-        if (movement_vector.x != 0) { movement_vector.y = 0; }
-        if (movement_vector.y != 0) { movement_vector.x = 0; }
+        if (Rope.totalDistance <= 5f)
+        {
+            if (movement_vector.x != 0) { movement_vector.y = 0; }
+            if (movement_vector.y != 0) { movement_vector.x = 0; }
+        }
+        
+        else
+        {
+            if (Mathf.Abs(this.transform.position.x - Rope.lastHitTransform.position.x) >= Mathf.Abs(this.transform.position.y - Rope.lastHitTransform.position.y))
+            {
+                if (this.transform.position.x <= Rope.lastHitTransform.position.x)
+                {
+                    if (movement_vector.x == -1) { movement_vector.x = 0; }
+                    else { movement_vector.x = 1; }
+                    movement_vector.y = 0;
+                }
+                else
+                {
+                    if (movement_vector.x == 1) { movement_vector.x = 0; }
+                    else { movement_vector.x = -1; }
+                    movement_vector.y = 0;
+                }
+            }
+               
+            else
+            {
+                if (this.transform.position.y >= Rope.lastHitTransform.position.y)
+                {
+                    movement_vector.x = 0;
+                    if (movement_vector.y == 1) { movement_vector.y = 0; }
+                    else { movement_vector.y = -1; }
+                }
+                else
+                {
+                    movement_vector.x = 0;
+                    if (movement_vector.y == -1) { movement_vector.y = 0; }
+                    else { movement_vector.y = 1; }
+                }
+            }
+        }
+
         is_moving = movement_vector.x != 0 || movement_vector.y != 0;
 
         if (Input.GetButtonDown("Run")) { isWalking = false;}
@@ -91,4 +131,8 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("speed", movement_vector.sqrMagnitude);
     }
 
+    //float squareRootOfRope()
+    //{
+    //    return Mathf.Sqrt(Mathf.Pow(Rope.totalDistance.y, 2) + Mathf.Pow(Rope.totalDistance.x, 2));
+    //}
 }

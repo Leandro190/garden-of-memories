@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-    [SerializeField] GameObject ropeBase;
     [SerializeField] GameObject player;
 
-    Transform pointA;
-    Transform pointB;
     LineRenderer rope;
     RaycastHit2D hit;
     List<Transform> hits;
 
-    int obstacles = 1;
-    int decrement = 0;
+    int hitPostion;
+    float distanceFromHit;
+    public static float totalDistance;
+    public static Transform lastHitTransform;
 
     private void Start()
     {
-        pointA = ropeBase.GetComponent<Transform>();
-        pointB = player.GetComponent<Transform>();
+        hitPostion = 0;
+        distanceFromHit = 0;
+        totalDistance = 0;
         rope = GetComponent<LineRenderer>();
+        rope.positionCount = 2;
         hits = new List<Transform>();
     }
 
@@ -28,12 +29,13 @@ public class Rope : MonoBehaviour
     {
         DrawRope();
         FindPoint();
+        CalculateTotalLength();
     }
 
     private void DrawRope()
     {
-        rope.SetPosition(0, player.transform.position);
-        //rope.SetPosition(0, player.transform.position);
+        rope.SetPosition(0, this.transform.position);
+        rope.SetPosition(rope.positionCount-1, player.transform.position);
     }
 
     //private void OnCollisionEnter(Collision collision)
@@ -47,24 +49,56 @@ public class Rope : MonoBehaviour
         
     //}
 
+    private void CalculateLengthFromHit()
+    {
+        if (hitPostion == 0)
+        {
+            distanceFromHit += Vector2.Distance(hits[hitPostion].position, this.transform.position);
+        }
+        else
+        {
+            distanceFromHit += Vector2.Distance(hits[hitPostion].position, hits[hitPostion - 1].position);
+        }
+    }
+
+    private void CalculateTotalLength()
+    {
+        if (hitPostion == 0)
+        {
+            totalDistance = Vector2.Distance(player.transform.position, this.transform.position);
+        }
+        else
+        {
+            totalDistance = Vector2.Distance(player.transform.position, hits[hitPostion - 1].position) + distanceFromHit;
+        }
+    }
+
     private void FindPoint()
     {
+        if (hitPostion > 0)
+        {
+            hit = Physics2D.Linecast(hits[hitPostion - 1].position, player.transform.position);
+        }
+        else
+        {
+            hit = Physics2D.Linecast(this.transform.position, player.transform.position);
+        }
         
-        
-        hit = Physics2D.Linecast(ropeBase.transform.position, player.transform.position);
         
         if (hit && !hits.Contains(hit.transform))
         {
-            hits.Add(hit.collider.transform);
-            print("hit");
-            
-            rope.SetPosition(1, hits[obstacles - 1].position);
-            for (int i= 0; i< (obstacles - 1); i++)
-            {
-                rope.SetPosition(obstacles-i, hits[i].position);
-            }
+            rope.positionCount++;
 
-            obstacles++;
+            hits.Add(hit.collider.transform);
+
+            lastHitTransform = hits[hitPostion];
+            
+            rope.SetPosition(rope.positionCount-1, player.transform.position);
+            rope.SetPosition(hitPostion+1, hit.transform.position);
+
+            CalculateLengthFromHit();
+
+            hitPostion++;
         }
     }
 }
