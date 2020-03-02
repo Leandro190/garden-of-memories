@@ -15,7 +15,7 @@ public class Insects : MonoBehaviour
 
     private void Start()
     {
-        InsectNumber = (int)(pathCreator.path.length * 15f);
+        //InsectNumber = (int)(pathCreator.path.length * 15f);
     }
 
     void Update()
