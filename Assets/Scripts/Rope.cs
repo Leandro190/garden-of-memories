@@ -14,9 +14,13 @@ public class Rope : MonoBehaviour
     float distanceFromHit;
     public static float totalDistance;
     public static Transform lastHitTransform;
+    LayerMask defaultLayer;
+    LayerMask targetLayer;
+    Obstacle obstacle;
 
     private void Start()
     {
+        defaultLayer = 1;
         hitPostion = 0;
         distanceFromHit = 0;
         totalDistance = 0;
@@ -37,17 +41,6 @@ public class Rope : MonoBehaviour
         rope.SetPosition(0, this.transform.position);
         rope.SetPosition(rope.positionCount-1, player.transform.position);
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.collider.tag == "obstacle")
-    //    {
-    //        rope.SetPosition(1, collision.collider.transform.position);
-    //        rope.SetPosition(2, player.transform.position);
-    //    }
-
-        
-    //}
 
     private void CalculateLengthFromHit()
     {
@@ -75,19 +68,20 @@ public class Rope : MonoBehaviour
 
     private void FindPoint()
     {
-        if (hitPostion > 0)
+        if (hitPostion == 0)
         {
-            hit = Physics2D.Linecast(hits[hitPostion - 1].position, player.transform.position);
+            hit = Physics2D.Linecast(this.transform.position, player.transform.position, 1<<8);
         }
         else
         {
-            hit = Physics2D.Linecast(this.transform.position, player.transform.position);
+            hit = Physics2D.Linecast(hits[hitPostion - 1].position, player.transform.position, 1<<8);
         }
-        
         
         if (hit && !hits.Contains(hit.transform))
         {
             rope.positionCount++;
+
+            hit.collider.gameObject.layer = 1 >> 8;
 
             hits.Add(hit.collider.transform);
 
