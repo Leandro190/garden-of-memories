@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        hose_object = null;
         hose = hose_prefab.GetComponent<Hose>();
         obstacles = GameObject.FindGameObjectsWithTag("obstacle");
         triggerEntered = false;
@@ -154,6 +155,10 @@ public class PlayerController : MonoBehaviour
                 if (obstacles[i].layer == 0)
                 {
                     obstacles[i].layer = 8;
+                    if (obstacles[i].GetComponent<Tree>())
+                    {
+                        obstacles[i].GetComponent<Tree>().tiedUp = false;
+                    }
                 }
             }
             Destroy(hose_object);

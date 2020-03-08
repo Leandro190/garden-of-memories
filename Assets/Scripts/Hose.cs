@@ -9,7 +9,7 @@ public class Hose : MonoBehaviour
     LineRenderer hose;
     RaycastHit2D hit;
     List<Transform> hits;
-
+    Vector3 offset;
     int hitPostion;
     float distanceFromHit;
     public float totalDistance { set; get; }
@@ -19,6 +19,7 @@ public class Hose : MonoBehaviour
 
     private void Start()
     {
+        offset = new Vector3(-0.05f, -0.52f, 0f);
         length = Hose_Length;
         player = GameObject.FindWithTag("Player");
         hitPostion = 0;
@@ -84,13 +85,17 @@ public class Hose : MonoBehaviour
             hose.positionCount++;
 
             hit.collider.gameObject.layer = 1 >> 8;
+            if (hit.collider.gameObject.GetComponent<Tree>())
+            {
+                hit.collider.gameObject.GetComponent<Tree>().tiedUp = true;
+            }
 
             hits.Add(hit.collider.transform);
 
             lastHitTransform = hits[hitPostion];
             
             hose.SetPosition(hose.positionCount-1, player.transform.position);
-            hose.SetPosition(hitPostion+1, hit.transform.position);
+            hose.SetPosition(hitPostion+1, (hit.transform.position+offset));
 
             CalculateLengthFromHit();
 
