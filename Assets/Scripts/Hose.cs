@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Hose : MonoBehaviour
 {
+    [SerializeField] float Hose_Length;
+
     GameObject player;
 
     LineRenderer hose;
@@ -12,10 +14,11 @@ public class Hose : MonoBehaviour
     Vector3 offset;
     int hitPostion;
     float distanceFromHit;
+
+    public Transform startingPoint { set; get; }
     public float totalDistance { set; get; }
     public Transform lastHitTransform { set; get; }
-    [SerializeField] float Hose_Length;
-    public float length { set;  get; }
+    public float length { set; get; }
 
     private void Start()
     {
@@ -28,7 +31,7 @@ public class Hose : MonoBehaviour
         hose = GetComponent<LineRenderer>();
         hose.positionCount = 2;
         hits = new List<Transform>();
-        hose.SetPosition(0, this.transform.position);
+        hose.SetPosition(0, startingPoint.position);
         hose.SetPosition(hose.positionCount - 1, player.transform.position);
     }
 
@@ -41,7 +44,7 @@ public class Hose : MonoBehaviour
 
     private void Drawhose()
     {
-        hose.SetPosition(0, this.transform.position);
+        hose.SetPosition(0, startingPoint.position);
         hose.SetPosition(hose.positionCount-1, player.transform.position);
     }
 
@@ -49,7 +52,7 @@ public class Hose : MonoBehaviour
     {
         if (hitPostion == 0)
         {
-            distanceFromHit += Vector2.Distance(hits[hitPostion].position, this.transform.position);
+            distanceFromHit += Vector2.Distance(hits[hitPostion].position, startingPoint.position);
         }
         else
         {
@@ -61,7 +64,7 @@ public class Hose : MonoBehaviour
     {
         if (hitPostion == 0)
         {
-            totalDistance = Vector2.Distance(player.transform.position, this.transform.position);
+            totalDistance = Vector2.Distance(player.transform.position, startingPoint.position);
         }
         else
         {
@@ -73,7 +76,7 @@ public class Hose : MonoBehaviour
     {
         if (hitPostion == 0)
         {
-            hit = Physics2D.Linecast(this.transform.position, player.transform.position, 1<<8);
+            hit = Physics2D.Linecast(startingPoint.position, player.transform.position, 1<<8);
         }
         else
         {

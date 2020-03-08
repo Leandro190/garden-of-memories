@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     GameObject hose_object;
     Hose hose;
     GameObject[] obstacles;
+    Transform hose_startingPoint;
 
     // References to other components (can be from other game objects!)
     Animator animator;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         hose_object = null;
+        hose_startingPoint = null;
         hose = hose_prefab.GetComponent<Hose>();
         obstacles = GameObject.FindGameObjectsWithTag("obstacle");
         triggerEntered = false;
@@ -168,6 +170,7 @@ public class PlayerController : MonoBehaviour
             triggerEntered = false;
             hose_object = Instantiate(hose_prefab) as GameObject;
             hose = hose_object.GetComponent<Hose>();
+            hose.startingPoint = hose_startingPoint;
         }
     }
 
@@ -175,6 +178,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "hose" && hose_object == null)
         {
+            hose_startingPoint = collision.transform;
             triggerEntered = true;
         }
     }
