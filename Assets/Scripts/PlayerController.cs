@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     bool isWalking;
     bool is_moving;
+    bool triggerEntered;
 
     public int allowed_to_move;
 
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     GameObject hose_object;
     Hose hose;
+    GameObject[] obstacles;
 
     // References to other components (can be from other game objects!)
     Animator animator;
@@ -34,6 +36,8 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         hose = hose_prefab.GetComponent<Hose>();
+        obstacles = GameObject.FindGameObjectsWithTag("obstacle");
+        triggerEntered = false;
 
         isWalking = true;
 
@@ -50,9 +54,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleInput();
         Animate();
         Inputs();
+        HandleInput();
     }
 
     private void FixedUpdate()
@@ -69,7 +73,7 @@ public class PlayerController : MonoBehaviour
         movement_vector.x = Input.GetAxisRaw("Horizontal");
         movement_vector.y = Input.GetAxisRaw("Vertical");
 
-        if (hose.totalDistance <= 5f)
+        if (hose.totalDistance <= hose.length || hose_object == null)
         {
             if (movement_vector.x != 0) { movement_vector.y = 0; }
             if (movement_vector.y != 0) { movement_vector.x = 0; }
@@ -77,35 +81,38 @@ public class PlayerController : MonoBehaviour
         
         else
         {
-            if (Mathf.Abs(this.transform.position.x - hose.lastHitTransform.position.x) >= Mathf.Abs(this.transform.position.y - hose.lastHitTransform.position.y))
+            if (hose_object != null)
             {
-                if (this.transform.position.x <= hose.lastHitTransform.position.x)
+                if (Mathf.Abs(this.transform.position.x - hose.lastHitTransform.position.x) >= Mathf.Abs(this.transform.position.y - hose.lastHitTransform.position.y))
                 {
-                    if (movement_vector.x == -1) { movement_vector.x = 0; }
-                    else { movement_vector.x = 1; }
-                    movement_vector.y = 0;
+                    if (this.transform.position.x <= hose.lastHitTransform.position.x)
+                    {
+                        if (movement_vector.x == -1) { movement_vector.x = 0; }
+                        else { movement_vector.x = 1; }
+                        movement_vector.y = 0;
+                    }
+                    else
+                    {
+                        if (movement_vector.x == 1) { movement_vector.x = 0; }
+                        else { movement_vector.x = -1; }
+                        movement_vector.y = 0;
+                    }
                 }
+
                 else
                 {
-                    if (movement_vector.x == 1) { movement_vector.x = 0; }
-                    else { movement_vector.x = -1; }
-                    movement_vector.y = 0;
-                }
-            }
-               
-            else
-            {
-                if (this.transform.position.y >= hose.lastHitTransform.position.y)
-                {
-                    movement_vector.x = 0;
-                    if (movement_vector.y == 1) { movement_vector.y = 0; }
-                    else { movement_vector.y = -1; }
-                }
-                else
-                {
-                    movement_vector.x = 0;
-                    if (movement_vector.y == -1) { movement_vector.y = 0; }
-                    else { movement_vector.y = 1; }
+                    if (this.transform.position.y >= hose.lastHitTransform.position.y)
+                    {
+                        movement_vector.x = 0;
+                        if (movement_vector.y == 1) { movement_vector.y = 0; }
+                        else { movement_vector.y = -1; }
+                    }
+                    else
+                    {
+                        movement_vector.x = 0;
+                        if (movement_vector.y == -1) { movement_vector.y = 0; }
+                        else { movement_vector.y = 1; }
+                    }
                 }
             }
         }
@@ -142,7 +149,20 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && hose_object != null)
         {
+            for(int i=0; i < obstacles.Length; i++)
+            {
+                if (obstacles[i].layer == 0)
+                {
+                    obstacles[i].layer = 8;
+                }
+            }
             Destroy(hose_object);
+        }
+        if (Input.GetMouseButtonDown(0) && hose_object == null && triggerEntered)
+        {
+            triggerEntered = false;
+            hose_object = Instantiate(hose_prefab) as GameObject;
+            hose = hose_object.GetComponent<Hose>();
         }
     }
 
@@ -150,8 +170,14 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "hose" && hose_object == null)
         {
-            hose_object = Instantiate(hose_prefab) as GameObject;
-            hose = hose_object.GetComponent<Hose>();
+            triggerEntered = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "hose")
+        {
+            triggerEntered = false;
         }
     }
 }

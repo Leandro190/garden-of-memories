@@ -14,9 +14,12 @@ public class Hose : MonoBehaviour
     float distanceFromHit;
     public float totalDistance { set; get; }
     public Transform lastHitTransform { set; get; }
+    [SerializeField] float Hose_Length;
+    public float length { set;  get; }
 
     private void Start()
     {
+        length = Hose_Length;
         player = GameObject.FindWithTag("Player");
         hitPostion = 0;
         distanceFromHit = 0;
