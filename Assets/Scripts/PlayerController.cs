@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float mWalkSpeed;
     [SerializeField] float mRunSpeed;
     [SerializeField] private float turnSpeed = 10;
+    [SerializeField] GameObject hose_prefab;
 
     [Range(0, 1f)] public float friction = 1;
 
@@ -22,6 +23,9 @@ public class PlayerController : MonoBehaviour
 
     Vector2 previousPosition;
 
+    GameObject hose_object;
+    Hose hose;
+
     // References to other components (can be from other game objects!)
     Animator animator;
     Rigidbody2D rb;
@@ -29,6 +33,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        hose = hose_prefab.GetComponent<Hose>();
+
         isWalking = true;
 
         movement_vector = Vector2.zero;
@@ -46,6 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleInput();
         Animate();
+        Inputs();
     }
 
     private void FixedUpdate()
@@ -62,7 +69,7 @@ public class PlayerController : MonoBehaviour
         movement_vector.x = Input.GetAxisRaw("Horizontal");
         movement_vector.y = Input.GetAxisRaw("Vertical");
 
-        if (Rope.totalDistance <= 5f)
+        if (hose.totalDistance <= 5f)
         {
             if (movement_vector.x != 0) { movement_vector.y = 0; }
             if (movement_vector.y != 0) { movement_vector.x = 0; }
@@ -70,9 +77,9 @@ public class PlayerController : MonoBehaviour
         
         else
         {
-            if (Mathf.Abs(this.transform.position.x - Rope.lastHitTransform.position.x) >= Mathf.Abs(this.transform.position.y - Rope.lastHitTransform.position.y))
+            if (Mathf.Abs(this.transform.position.x - hose.lastHitTransform.position.x) >= Mathf.Abs(this.transform.position.y - hose.lastHitTransform.position.y))
             {
-                if (this.transform.position.x <= Rope.lastHitTransform.position.x)
+                if (this.transform.position.x <= hose.lastHitTransform.position.x)
                 {
                     if (movement_vector.x == -1) { movement_vector.x = 0; }
                     else { movement_vector.x = 1; }
@@ -88,7 +95,7 @@ public class PlayerController : MonoBehaviour
                
             else
             {
-                if (this.transform.position.y >= Rope.lastHitTransform.position.y)
+                if (this.transform.position.y >= hose.lastHitTransform.position.y)
                 {
                     movement_vector.x = 0;
                     if (movement_vector.y == 1) { movement_vector.y = 0; }
@@ -131,8 +138,20 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("speed", movement_vector.sqrMagnitude);
     }
 
-    //float squareRootOfRope()
-    //{
-    //    return Mathf.Sqrt(Mathf.Pow(Rope.totalDistance.y, 2) + Mathf.Pow(Rope.totalDistance.x, 2));
-    //}
+    void Inputs()
+    {
+        if (Input.GetMouseButtonDown(0) && hose_object != null)
+        {
+            Destroy(hose_object);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "hose" && hose_object == null)
+        {
+            hose_object = Instantiate(hose_prefab) as GameObject;
+            hose = hose_object.GetComponent<Hose>();
+        }
+    }
 }
