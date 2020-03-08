@@ -120,6 +120,8 @@ MonoBehaviour:
   mWalkSpeed: 2
   mRunSpeed: 0
   turnSpeed: 10
+  hose_prefab: {fileID: 911005278514529119, guid: a93d59b7852f2d142a78b6f1638ea6f0,
+    type: 3}
   friction: 1
   allowed_to_move: 0
 --- !u!95 &1031509745989687258

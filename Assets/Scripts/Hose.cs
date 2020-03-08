@@ -2,44 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rope : MonoBehaviour
+public class Hose : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    GameObject player;
 
-    LineRenderer rope;
+    LineRenderer hose;
     RaycastHit2D hit;
     List<Transform> hits;
 
     int hitPostion;
     float distanceFromHit;
-    public static float totalDistance;
-    public static Transform lastHitTransform;
-    LayerMask defaultLayer;
-    LayerMask targetLayer;
-    Obstacle obstacle;
+    public float totalDistance { set; get; }
+    public Transform lastHitTransform { set; get; }
+    [SerializeField] float Hose_Length;
+    public float length { set;  get; }
 
     private void Start()
     {
-        defaultLayer = 1;
+        length = Hose_Length;
+        player = GameObject.FindWithTag("Player");
         hitPostion = 0;
         distanceFromHit = 0;
         totalDistance = 0;
-        rope = GetComponent<LineRenderer>();
-        rope.positionCount = 2;
+        hose = GetComponent<LineRenderer>();
+        hose.positionCount = 2;
         hits = new List<Transform>();
+        hose.SetPosition(0, this.transform.position);
+        hose.SetPosition(hose.positionCount - 1, player.transform.position);
     }
 
     private void Update()
     {
-        DrawRope();
+        Drawhose();
         FindPoint();
         CalculateTotalLength();
     }
 
-    private void DrawRope()
+    private void Drawhose()
     {
-        rope.SetPosition(0, this.transform.position);
-        rope.SetPosition(rope.positionCount-1, player.transform.position);
+        hose.SetPosition(0, this.transform.position);
+        hose.SetPosition(hose.positionCount-1, player.transform.position);
     }
 
     private void CalculateLengthFromHit()
@@ -79,7 +81,7 @@ public class Rope : MonoBehaviour
         
         if (hit && !hits.Contains(hit.transform))
         {
-            rope.positionCount++;
+            hose.positionCount++;
 
             hit.collider.gameObject.layer = 1 >> 8;
 
@@ -87,8 +89,8 @@ public class Rope : MonoBehaviour
 
             lastHitTransform = hits[hitPostion];
             
-            rope.SetPosition(rope.positionCount-1, player.transform.position);
-            rope.SetPosition(hitPostion+1, hit.transform.position);
+            hose.SetPosition(hose.positionCount-1, player.transform.position);
+            hose.SetPosition(hitPostion+1, hit.transform.position);
 
             CalculateLengthFromHit();
 
