@@ -6,6 +6,7 @@ TagManager:
   tags:
   - obstacle
   - hose
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - 
   - Obstacles
-  - 
+  - Background
   - 
   - 
   - 
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1350991543
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
