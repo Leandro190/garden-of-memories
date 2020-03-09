@@ -52,7 +52,7 @@ public class Hose : MonoBehaviour
     {
         if (hitPostion == 0)
         {
-            distanceFromHit += Vector2.Distance(hits[hitPostion].position+offset, startingPoint.position);
+            distanceFromHit += Vector2.Distance(hits[hitPostion].position + offset, startingPoint.position);
         }
         else
         {
@@ -83,7 +83,7 @@ public class Hose : MonoBehaviour
             print("hit: " + hits[hitPostion - 1].position);
             print("player: " +player.transform.position);
             
-            hit = Physics2D.Linecast(hits[hitPostion - 1].position+offset, player.transform.position, 1<<8);
+            hit = Physics2D.Linecast(hits[hitPostion - 1].position + offset, player.transform.position, 1<<8);
         }
         
         if (hit && !hits.Contains(hit.transform))
@@ -101,7 +101,7 @@ public class Hose : MonoBehaviour
             lastHitTransform = hits[hitPostion];
             
             hose.SetPosition(hose.positionCount-1, player.transform.position);
-            hose.SetPosition(hitPostion+1, (hit.transform.position+offset));
+            hose.SetPosition(hitPostion+1, (hit.transform.position + offset));
 
             CalculateLengthFromHit();
 
