@@ -52,11 +52,11 @@ public class Hose : MonoBehaviour
     {
         if (hitPostion == 0)
         {
-            distanceFromHit += Vector2.Distance(hits[hitPostion].position, startingPoint.position);
+            distanceFromHit += Vector2.Distance(hits[hitPostion].position+offset, startingPoint.position);
         }
         else
         {
-            distanceFromHit += Vector2.Distance(hits[hitPostion].position, hits[hitPostion - 1].position);
+            distanceFromHit += Vector2.Distance(hits[hitPostion].position + offset, hits[hitPostion - 1].position);
         }
     }
 
@@ -68,7 +68,7 @@ public class Hose : MonoBehaviour
         }
         else
         {
-            totalDistance = Vector2.Distance(player.transform.position, hits[hitPostion - 1].position) + distanceFromHit;
+            totalDistance = Vector2.Distance(player.transform.position, hits[hitPostion - 1].position + offset) + distanceFromHit;
         }
     }
 
@@ -80,7 +80,10 @@ public class Hose : MonoBehaviour
         }
         else
         {
-            hit = Physics2D.Linecast(hits[hitPostion - 1].position, player.transform.position, 1<<8);
+            print("hit: " + hits[hitPostion - 1].position);
+            print("player: " +player.transform.position);
+            
+            hit = Physics2D.Linecast(hits[hitPostion - 1].position+offset, player.transform.position, 1<<8);
         }
         
         if (hit && !hits.Contains(hit.transform))

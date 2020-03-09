@@ -141,6 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f568b458ad58c438d8bf233b4bac0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dead_tree_bare: {fileID: 21300000, guid: f17323d701efa354c9db0dd91b7dcebb, type: 3}
-  dead_tree_hose: {fileID: 21300000, guid: 1a406477cb3573e429768d362241dbb8, type: 3}
-  Hose_Length: 5
+  Hose_Length: 20
