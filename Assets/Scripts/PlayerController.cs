@@ -91,4 +91,17 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("speed", movement_vector.sqrMagnitude);
     }
 
+    private void OnCollisionStay2D(Collision2D collision) {
+        print(collision.otherCollider.IsTouchingLayers(LayerMask.GetMask("Interactable")));
+        if (collision.otherCollider.IsTouchingLayers(LayerMask.GetMask("Interactable"))) {
+            if (Input.GetButtonDown("Interact")) collision.collider.transform.Rotate(new Vector3(0, 0, 90));
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision) {
+        if (GetComponent<Collider2D>().IsTouchingLayers(LayerMask.GetMask("Interactable"))) {
+            print(Input.GetButtonDown("Interact"));
+            if (Input.GetButtonDown("Interact")) collision.transform.Rotate(new Vector3(0, 0, 90));
+        }
+    }
 }
