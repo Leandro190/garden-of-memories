@@ -40,6 +40,7 @@ public class Hose : MonoBehaviour
         Drawhose();
         FindPoint();
         CalculateTotalLength();
+        print(totalDistance);
     }
 
     private void Drawhose()
@@ -80,9 +81,6 @@ public class Hose : MonoBehaviour
         }
         else
         {
-            print("hit: " + hits[hitPostion - 1].position);
-            print("player: " +player.transform.position);
-            
             hit = Physics2D.Linecast(hits[hitPostion - 1].position + offset, player.transform.position, 1<<8);
         }
         
