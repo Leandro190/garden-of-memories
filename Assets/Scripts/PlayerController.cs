@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [Range(0, 1f)] public float friction = 1;
 
-    private Vector2 movement_vector;
+    public static Vector2 movement_vector;
     private Vector2 input_vector;
 
     bool isWalking;
@@ -82,13 +82,14 @@ public class PlayerController : MonoBehaviour
             if (movement_vector.y != 0) { movement_vector.x = 0; }
         }
         
+        // This is to limit player movement when you reach rope length limit
         else
         {
             if (hose_object != null)
             {
-                if (Mathf.Abs(this.transform.position.x) - Mathf.Abs(hose.lastHitTransform.position.x) >= Mathf.Abs(this.transform.position.y) - Mathf.Abs(hose.lastHitTransform.position.y))
+                if (Mathf.Abs(this.transform.position.x) - Mathf.Abs(hose.lastHitObstacle.position.x) >= Mathf.Abs(this.transform.position.y) - Mathf.Abs(hose.lastHitObstacle.position.y))
                 {
-                    if (this.transform.position.x <= hose.lastHitTransform.position.x)
+                    if (this.transform.position.x <= hose.lastHitObstacle.transform.position.x)
                     {
                         if (movement_vector.x == -1) { movement_vector.x = 0; }
                         else { movement_vector.x = 1; }
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
                 else
                 {
-                    if (this.transform.position.y >= hose.lastHitTransform.position.y)
+                    if (this.transform.position.y >= hose.lastHitObstacle.position.y)
                     {
                         movement_vector.x = 0;
                         if (movement_vector.y == 1) { movement_vector.y = 0; }
