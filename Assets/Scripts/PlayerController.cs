@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             if (hose_object != null)
             {
-                if (Mathf.Abs(this.transform.position.x - hose.lastHitTransform.position.x) >= Mathf.Abs(this.transform.position.y - hose.lastHitTransform.position.y))
+                if (Mathf.Abs(this.transform.position.x) - Mathf.Abs(hose.lastHitTransform.position.x) >= Mathf.Abs(this.transform.position.y) - Mathf.Abs(hose.lastHitTransform.position.y))
                 {
                     if (this.transform.position.x <= hose.lastHitTransform.position.x)
                     {

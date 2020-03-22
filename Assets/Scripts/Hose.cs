@@ -5,12 +5,15 @@ using UnityEngine;
 public class Hose : MonoBehaviour
 {
     [SerializeField] float Hose_Length;
+    [SerializeField] float Angle_of_disconnect;
 
     GameObject player;
 
     LineRenderer hose;
     RaycastHit2D hit;
-    List<Transform> hits;
+    List<GameObject> hits;
+    Vector3 target_line;
+    Vector3 player_line;
     Vector3 offset;
     int hitPostion;
     float distanceFromHit;
@@ -22,15 +25,17 @@ public class Hose : MonoBehaviour
 
     private void Start()
     {
+        target_line = new Vector3(0, 0, 0);
         offset = new Vector3(-0.05f, -0.52f, 0f);
         length = Hose_Length;
         player = GameObject.FindWithTag("Player");
         hitPostion = 0;
         distanceFromHit = 0;
         totalDistance = 0;
+        lastHitTransform = this.transform;
         hose = GetComponent<LineRenderer>();
         hose.positionCount = 2;
-        hits = new List<Transform>();
+        hits = new List<GameObject>();
         hose.SetPosition(0, startingPoint.position);
         hose.SetPosition(hose.positionCount - 1, player.transform.position);
     }
@@ -40,7 +45,10 @@ public class Hose : MonoBehaviour
         Drawhose();
         FindPoint();
         CalculateTotalLength();
-        print(totalDistance);
+        if (hose.positionCount >= 3)
+        {
+            Unattach();
+        }
     }
 
     private void Drawhose()
@@ -53,11 +61,11 @@ public class Hose : MonoBehaviour
     {
         if (hitPostion == 0)
         {
-            distanceFromHit += Vector2.Distance(hits[hitPostion].position + offset, startingPoint.position);
+            distanceFromHit += Vector2.Distance(hits[hitPostion].transform.position + offset, startingPoint.position);
         }
         else
         {
-            distanceFromHit += Vector2.Distance(hits[hitPostion].position + offset, hits[hitPostion - 1].position);
+            distanceFromHit += Vector2.Distance(hits[hitPostion].transform.position + offset, hits[hitPostion - 1].transform.position + offset);
         }
     }
 
@@ -69,7 +77,7 @@ public class Hose : MonoBehaviour
         }
         else
         {
-            totalDistance = Vector2.Distance(player.transform.position, hits[hitPostion - 1].position + offset) + distanceFromHit;
+            totalDistance = Vector2.Distance(player.transform.position, hits[hitPostion - 1].transform.position + offset) + distanceFromHit;
         }
     }
 
@@ -81,10 +89,10 @@ public class Hose : MonoBehaviour
         }
         else
         {
-            hit = Physics2D.Linecast(hits[hitPostion - 1].position + offset, player.transform.position, 1<<8);
+            hit = Physics2D.Linecast(hits[hitPostion - 1].transform.position + offset, player.transform.position, 1<<8);
         }
-        
-        if (hit && !hits.Contains(hit.transform))
+
+        if (hit && !hits.Contains(hit.collider.gameObject))
         {
             hose.positionCount++;
 
@@ -94,10 +102,9 @@ public class Hose : MonoBehaviour
                 hit.collider.gameObject.GetComponent<Tree>().tiedUp = true;
             }
 
-            hits.Add(hit.collider.transform);
+            hits.Add(hit.collider.gameObject);
+            lastHitTransform = hit.collider.transform;
 
-            lastHitTransform = hits[hitPostion];
-            
             hose.SetPosition(hose.positionCount-1, player.transform.position);
             hose.SetPosition(hitPostion+1, (hit.transform.position + offset));
 
@@ -105,5 +112,41 @@ public class Hose : MonoBehaviour
 
             hitPostion++;
         }
+    }
+
+    private void Unattach()
+    {
+        if (hose.positionCount > 3)
+        {
+            target_line = hits[hitPostion - 2].transform.position - offset - hits[hitPostion - 1].transform.position - offset;
+        }
+        else if (hose.positionCount == 3)
+        {
+            target_line = startingPoint.position - hits[hitPostion - 1].transform.position - offset;
+        }
+        else
+        {
+            target_line = new Vector3(0, 0, 0);
+        }
+
+        player_line = hits[hitPostion - 1].transform.position + offset - player.transform.position;
+        
+        print(FindAngle(target_line, player_line));
+        if (FindAngle(target_line, player_line) <= Mathf.Cos(Angle_of_disconnect * Mathf.Deg2Rad))
+        {
+            hose.positionCount--;
+            hose.SetPosition(hose.positionCount - 1, player.transform.position);
+            hits[hitPostion - 1].GetComponent<Tree>().tiedUp = false;
+            hits[hitPostion - 1].layer = 8;
+            hits.Remove(hits[hitPostion - 1]);
+            hitPostion--;
+
+            lastHitTransform = hits[hitPostion - 1].transform;
+        }
+    }
+
+    private float FindAngle(Vector3 target_line, Vector3 player_line)
+    {
+        return Vector3.Dot(target_line, player_line) / (Vector3.Magnitude(target_line) * Vector3.Magnitude(player_line));
     }
 }
