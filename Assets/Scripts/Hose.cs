@@ -151,7 +151,13 @@ public class Hose : MonoBehaviour
         }
 
         player_line = player.transform.position - hits[hitPostion - 1].transform.position - offset;
-       
+
+        print("px" + hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Positive_x);
+        print("nx" + hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Negative_x);
+        print("py" + hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Positive_y);
+        print("ny" + hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Negative_y);
+        print(FindAngle(target_line, player_line));
+
         if (((hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Negative_x || hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Positive_y) 
             && FindAngle(target_line, player_line) <= -Angle_of_disconnect && FindAngle(target_line, player_line) > -180f)
             || ((hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Negative_y || hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Positive_x) 
@@ -180,24 +186,40 @@ public class Hose : MonoBehaviour
     {
         if (hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Negative_y || hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Positive_y)
         {
-            if ((player_line.y + target_line.y) > target_line.y)
+            if (Vector3.Dot(Vector2.Perpendicular(target_line), player_line) > 0 && target_line.x > 0)
             {
-                return Mathf.Acos(Vector3.Dot(target_line, player_line) / (Vector3.Magnitude(target_line) * Vector3.Magnitude(player_line))) * Mathf.Rad2Deg;
+                return Vector2.Angle(target_line, player_line);
             }
-            else
+            if (Vector3.Dot(Vector2.Perpendicular(target_line), player_line) > 0 && target_line.x < 0)
             {
-                return -(Mathf.Acos(Vector3.Dot(target_line, player_line) / (Vector3.Magnitude(target_line) * Vector3.Magnitude(player_line))) * Mathf.Rad2Deg);
+                return -(Vector2.Angle(target_line, player_line));
+            }
+            if (Vector3.Dot(Vector2.Perpendicular(target_line), player_line) <= 0 && target_line.x > 0)
+            {
+                return -(Vector2.Angle(target_line, player_line));
+            }
+            if (Vector3.Dot(Vector2.Perpendicular(target_line), player_line) <= 0 && target_line.x < 0)
+            {
+                return Vector2.Angle(target_line, player_line);
             }
         }
         if (hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Negative_x || hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Positive_x)
         {
-            if ((player_line.x + target_line.x) > target_line.x)
+            if (Vector3.Dot(Vector2.Perpendicular(target_line), player_line) > 0 && target_line.y > 0)
             {
-                return -(Mathf.Acos(Vector3.Dot(target_line, player_line) / (Vector3.Magnitude(target_line) * Vector3.Magnitude(player_line))) * Mathf.Rad2Deg);
+                return Vector2.Angle(target_line, player_line);
             }
-            else
+            if (Vector3.Dot(Vector2.Perpendicular(target_line), player_line) > 0 && target_line.y < 0)
             {
-                return Mathf.Acos(Vector3.Dot(target_line, player_line) / (Vector3.Magnitude(target_line) * Vector3.Magnitude(player_line))) * Mathf.Rad2Deg;
+                return -(Vector2.Angle(target_line, player_line));
+            }
+            if (Vector3.Dot(Vector2.Perpendicular(target_line), player_line) <= 0 && target_line.y < 0)
+            {
+                return Vector2.Angle(target_line, player_line);
+            }
+            if (Vector3.Dot(Vector2.Perpendicular(target_line), player_line) <= 0 && target_line.y > 0)
+            {
+                return -(Vector2.Angle(target_line, player_line));
             }
         }
 
