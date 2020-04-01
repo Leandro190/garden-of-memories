@@ -153,18 +153,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && hose_object != null)
         {
-            for(int i=0; i < obstacles.Length; i++)
-            {
-                if (obstacles[i].layer == 0)
-                {
-                    obstacles[i].layer = 8;
-                    if (obstacles[i].GetComponent<Tree>())
-                    {
-                        obstacles[i].GetComponent<Tree>().tiedUp = false;
-                    }
-                }
-            }
-            Destroy(hose_object);
+            DestroyHose();
         }
         if (Input.GetMouseButtonDown(0) && hose_object == null && triggerEntered)
         {
@@ -182,6 +171,11 @@ public class PlayerController : MonoBehaviour
             hose_startingPoint = collision.transform;
             triggerEntered = true;
         }
+        if (collision.tag == "Goal" && hose_object != null)
+        {
+            print("GOAL! YOU DID IT!");
+            DestroyHose();
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -189,5 +183,21 @@ public class PlayerController : MonoBehaviour
         {
             triggerEntered = false;
         }
+    }
+
+    private void DestroyHose()
+    {
+        for (int i = 0; i < obstacles.Length; i++)
+        {
+            if (obstacles[i].layer == 0)
+            {
+                obstacles[i].layer = 8;
+                if (obstacles[i].GetComponent<Tree>())
+                {
+                    obstacles[i].GetComponent<Tree>().tiedUp = false;
+                }
+            }
+        }
+        Destroy(hose_object);
     }
 }

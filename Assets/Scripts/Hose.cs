@@ -152,12 +152,6 @@ public class Hose : MonoBehaviour
 
         player_line = player.transform.position - hits[hitPostion - 1].transform.position - offset;
 
-        print("px" + hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Positive_x);
-        print("nx" + hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Negative_x);
-        print("py" + hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Positive_y);
-        print("ny" + hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Negative_y);
-        print(FindAngle(target_line, player_line));
-
         if (((hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Negative_x || hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Positive_y) 
             && FindAngle(target_line, player_line) <= -Angle_of_disconnect && FindAngle(target_line, player_line) > -180f)
             || ((hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Negative_y || hits[hitPostion - 1].GetComponent<Tree>().DettachRope_Positive_x) 
