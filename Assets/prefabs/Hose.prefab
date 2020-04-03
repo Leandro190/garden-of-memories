@@ -141,4 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f568b458ad58c438d8bf233b4bac0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hose_Length: 5
+  Hose_Length: 30
+  Angle_of_disconnect: 20
