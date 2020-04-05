@@ -6,10 +6,13 @@ public class Tree : MonoBehaviour
 {
     [SerializeField] Sprite dead_tree_bare;
     [SerializeField] Sprite dead_tree_hose;
+    [SerializeField] Sprite alive_tree_bare;
+    [SerializeField] Sprite alive_tree_hose;
 
     SpriteRenderer sprite;
 
     public bool tiedUp { get; set; }
+    public bool isAlive { get; set; }
     public bool DettachRope_Positive_x { get; set; }
     public bool DettachRope_Positive_y { get; set; }
     public bool DettachRope_Negative_x { get; set; }
@@ -23,6 +26,7 @@ public class Tree : MonoBehaviour
         DettachRope_Negative_x = false;
         DettachRope_Negative_y = false;
         tiedUp = false;
+        isAlive = false;
         sprite = GetComponent<SpriteRenderer>();
         sprite.sprite = dead_tree_bare;
     }
@@ -32,11 +36,25 @@ public class Tree : MonoBehaviour
     {
         if (tiedUp)
         {
-            sprite.sprite = dead_tree_hose;
+            if (isAlive)
+            {
+                sprite.sprite = alive_tree_hose;
+            }
+            else
+            {
+                sprite.sprite = dead_tree_hose;
+            }
         }
         else
         {
-            sprite.sprite = dead_tree_bare;
+            if (isAlive)
+            {
+                sprite.sprite = alive_tree_bare;
+            }
+            else
+            {
+                sprite.sprite = dead_tree_bare;
+            }
         }
     }
 }

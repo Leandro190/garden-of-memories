@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: c6e130f5827f84647b8e06eca0548c1c
+guid: b5e4a372505ec62458008217bdb15cd3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1673732733077124514
-    second: trees_0
+      213: -739584479031008452
+    second: trees_hose_0
   - first:
-      213: 3611188691014843535
-    second: trees_1
+      213: 495545660658044104
+    second: trees_hose_1
   - first:
-      213: 2249915519335348110
-    second: trees_2
+      213: 3237992194850485677
+    second: trees_hose_2
   - first:
-      213: 5223556475179290604
-    second: trees_3
+      213: 5485470222299661872
+    second: trees_hose_3
   - first:
-      213: 384058854656272681
-    second: trees_4
+      213: 5308888273856559714
+    second: trees_hose_4
   - first:
-      213: 3818217323743452925
-    second: trees_5
+      213: 8035036410602246350
+    second: trees_hose_5
   - first:
-      213: -7523560045513598774
-    second: trees_6
+      213: 1936476878172242394
+    second: trees_hose_6
   - first:
-      213: -271311362049036883
-    second: trees_7
+      213: 2720901574866964824
+    second: trees_hose_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -110,127 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: trees_1
+      name: trees_hose_0
       rect:
         serializedVersion: 2
-        x: 137
-        y: 335
-        width: 188
-        height: 249
+        x: 121
+        y: 320
+        width: 229
+        height: 280
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8cf8d84bf48d1230800000000000000
-      internalID: 3611188691014843535
+      spriteID: c33e6f5b5d77cb5f0800000000000000
+      internalID: -739584479031008452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_2
+      name: trees_hose_1
       rect:
         serializedVersion: 2
-        x: 406
-        y: 331
-        width: 252
-        height: 262
+        x: 374
+        y: 324
+        width: 292
+        height: 276
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e873f988e3e493f10800000000000000
-      internalID: 2249915519335348110
+      spriteID: 8cc4281272880e600800000000000000
+      internalID: 495545660658044104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_3
+      name: trees_hose_2
       rect:
         serializedVersion: 2
-        x: 704
-        y: 325
-        width: 252
-        height: 262
+        x: 686
+        y: 312
+        width: 278
+        height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cefc04740fccd7840800000000000000
-      internalID: 5223556475179290604
+      spriteID: da5fc8fdeb8afec20800000000000000
+      internalID: 3237992194850485677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_5
+      name: trees_hose_3
       rect:
         serializedVersion: 2
-        x: 128
-        y: 41
-        width: 188
-        height: 249
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfe98f81d680df430800000000000000
-      internalID: 3818217323743452925
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trees_6
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 30
-        width: 264
-        height: 253
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ac817d80002f69790800000000000000
-      internalID: -7523560045513598774
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trees_7
-      rect:
-        serializedVersion: 2
-        x: 683
-        y: 29
+        x: 93
+        y: 23
         width: 265
-        height: 253
+        height: 274
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad2a81f0cb1c3cf0800000000000000
-      internalID: -271311362049036883
+      spriteID: 036872a9a1e402c40800000000000000
+      internalID: 5485470222299661872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trees_hose_4
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 15
+        width: 304
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26af473e1c5fca940800000000000000
+      internalID: 5308888273856559714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trees_hose_5
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 26
+        width: 286
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec0d6434b0f228f60800000000000000
+      internalID: 8035036410602246350
       vertices: []
       indices: 
       edges: []

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hose : MonoBehaviour
 {
+    [SerializeField] Vector3 offset_hook;
     [SerializeField] float Hose_Length;
     [SerializeField] float Angle_of_disconnect;
 
@@ -26,7 +27,7 @@ public class Hose : MonoBehaviour
     private void Start()
     {
         target_line = new Vector3(0, 0, 0);
-        offset = new Vector3(-0.05f, -0.52f, 0f);
+        offset = offset_hook;
         length = Hose_Length;
         player = GameObject.FindWithTag("Player");
         hitPostion = 0;

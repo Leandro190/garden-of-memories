@@ -1,31 +1,61 @@
 fileFormatVersion: 2
-guid: c6e130f5827f84647b8e06eca0548c1c
+guid: 58fef2e27d3f8ee44a96d26935b49d2d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1673732733077124514
-    second: trees_0
+      213: -5303551492782419284
+    second: trees_roots_0
   - first:
-      213: 3611188691014843535
-    second: trees_1
+      213: -3278781764099612725
+    second: trees_roots_1
   - first:
-      213: 2249915519335348110
-    second: trees_2
+      213: -988831175395682158
+    second: trees_roots_2
   - first:
-      213: 5223556475179290604
-    second: trees_3
+      213: 2856577679024570263
+    second: trees_roots_3
   - first:
-      213: 384058854656272681
-    second: trees_4
+      213: -7155850424104458121
+    second: trees_roots_4
   - first:
-      213: 3818217323743452925
-    second: trees_5
+      213: 6146152389156590164
+    second: trees_roots_5
   - first:
-      213: -7523560045513598774
-    second: trees_6
+      213: 2626547962730709123
+    second: trees_roots_0
   - first:
-      213: -271311362049036883
-    second: trees_7
+      213: -650108064753126741
+    second: trees_roots_1
+  - first:
+      213: -430375327788840507
+    second: trees_roots_2
+  - first:
+      213: -9016240540657031184
+    second: trees_roots_3
+  - first:
+      213: 8876255095427683417
+    second: trees_roots_4
+  - first:
+      213: -7457657533792777184
+    second: trees_roots_5
+  - first:
+      213: 8021465331561627651
+    second: trees_roots_6
+  - first:
+      213: -4925020097094352084
+    second: trees_roots_7
+  - first:
+      213: -6029274938209084606
+    second: trees_roots_8
+  - first:
+      213: -6170162770090837594
+    second: trees_roots_9
+  - first:
+      213: -5445339745939946535
+    second: trees_roots_10
+  - first:
+      213: -156275329016938139
+    second: trees_roots_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -110,13 +140,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: trees_1
+      name: trees_roots_1
       rect:
         serializedVersion: 2
-        x: 137
+        x: 199
         y: 335
-        width: 188
-        height: 249
+        width: 61
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8cf8d84bf48d1230800000000000000
-      internalID: 3611188691014843535
+      spriteID: ba2f5c6d82a5af6f0800000000000000
+      internalID: -650108064753126741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_2
+      name: trees_roots_2
       rect:
         serializedVersion: 2
-        x: 406
+        x: 487
         y: 331
-        width: 252
-        height: 262
+        width: 57
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e873f988e3e493f10800000000000000
-      internalID: 2249915519335348110
+      spriteID: 5c9cd0b6beff60af0800000000000000
+      internalID: -430375327788840507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_3
+      name: trees_roots_3
       rect:
         serializedVersion: 2
-        x: 704
+        x: 785
         y: 325
-        width: 252
-        height: 262
+        width: 57
+        height: 56
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cefc04740fccd7840800000000000000
-      internalID: 5223556475179290604
+      spriteID: 0f769a49ff0efd280800000000000000
+      internalID: -9016240540657031184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_5
+      name: trees_roots_5
       rect:
         serializedVersion: 2
-        x: 128
+        x: 194
         y: 41
-        width: 188
-        height: 249
+        width: 57
+        height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +217,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfe98f81d680df430800000000000000
-      internalID: 3818217323743452925
+      spriteID: 02c04c14cf3118890800000000000000
+      internalID: -7457657533792777184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_6
+      name: trees_roots_6
       rect:
         serializedVersion: 2
-        x: 397
+        x: 446
         y: 30
-        width: 264
-        height: 253
+        width: 139
+        height: 71
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +238,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac817d80002f69790800000000000000
-      internalID: -7523560045513598774
+      spriteID: 30087d13838f15f60800000000000000
+      internalID: 8021465331561627651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_7
+      name: trees_roots_7
       rect:
         serializedVersion: 2
-        x: 683
+        x: 733
         y: 29
-        width: 265
-        height: 253
+        width: 159
+        height: 89
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +259,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad2a81f0cb1c3cf0800000000000000
-      internalID: -271311362049036883
+      spriteID: c230809c050d6abb0800000000000000
+      internalID: -4925020097094352084
       vertices: []
       indices: 
       edges: []
