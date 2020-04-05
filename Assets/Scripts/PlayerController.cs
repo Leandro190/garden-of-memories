@@ -190,6 +190,13 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Goal" && hose_object != null)
         {
             print("GOAL! YOU DID IT!");
+            for (int i=0; i <obstacles.Length; i++)
+            {
+                if (obstacles[i].GetComponent<Tree>())
+                {
+                    obstacles[i].GetComponent<Tree>().isAlive = true;
+                }
+            }
             DestroyHose();
         }
 

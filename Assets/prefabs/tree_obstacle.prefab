@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2988556198825788237}
   - component: {fileID: 2988556198825788234}
-  - component: {fileID: 4041968499453634025}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: tree_roots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2988556198825788236}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00999999, y: 0.00999999, z: 0}
+  m_LocalPosition: {x: -0.04, y: -1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2988556199274917226}
@@ -71,7 +70,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: c24a473ad7d90074eb8c9ada5450d586, type: 3}
+  m_Sprite: {fileID: -4925020097094352084, guid: 58fef2e27d3f8ee44a96d26935b49d2d,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,22 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4041968499453634025
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2988556198825788236}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.26539606, y: -1.3269825}
-  serializedVersion: 2
-  m_Radius: 0.41870123
 --- !u!1 &2988556199274917231
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,9 +93,10 @@ GameObject:
   - component: {fileID: 2988556199274917226}
   - component: {fileID: 2988556199274917229}
   - component: {fileID: 2988556199274917227}
-  m_Layer: 10
-  m_Name: tree
-  m_TagString: Untagged
+  - component: {fileID: 6087220136699323068}
+  m_Layer: 8
+  m_Name: tree_obstacle
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 2988556199274917231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.74, y: -0.98, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 2988556198825788237}
   m_Father: {fileID: 0}
@@ -170,7 +155,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f17323d701efa354c9db0dd91b7dcebb, type: 3}
+  m_Sprite: {fileID: 6085851607660778526, guid: cec6d91aca11be64b8c575a81513fa0b,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -193,5 +179,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807b7df376f4dd44a9cd2abc4d7c89ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dead_tree_bare: {fileID: 21300000, guid: f17323d701efa354c9db0dd91b7dcebb, type: 3}
-  dead_tree_hose: {fileID: 21300000, guid: 1a406477cb3573e429768d362241dbb8, type: 3}
+  offset_hook: {x: 0, y: 0, z: 0}
+  dead_tree_bare: {fileID: 6085851607660778526, guid: cec6d91aca11be64b8c575a81513fa0b,
+    type: 3}
+  dead_tree_hose: {fileID: -5026434844411244400, guid: 25d6f3bab24bc4244a1e5d84a40db891,
+    type: 3}
+--- !u!58 &6087220136699323068
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988556199274917231}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.8505578}
+  serializedVersion: 2
+  m_Radius: 0.024146864

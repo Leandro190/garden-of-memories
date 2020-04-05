@@ -1,31 +1,55 @@
 fileFormatVersion: 2
-guid: c6e130f5827f84647b8e06eca0548c1c
+guid: 25d6f3bab24bc4244a1e5d84a40db891
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1673732733077124514
-    second: trees_0
+      213: 930014474942100015
+    second: trees_hose_leaves_0
   - first:
-      213: 3611188691014843535
-    second: trees_1
+      213: -4948531166531334121
+    second: trees_hose_leaves_1
   - first:
-      213: 2249915519335348110
-    second: trees_2
+      213: -8266522075227023785
+    second: trees_hose_leaves_2
   - first:
-      213: 5223556475179290604
-    second: trees_3
+      213: 1546610669621999624
+    second: trees_hose_leaves_3
   - first:
-      213: 384058854656272681
-    second: trees_4
+      213: -5616439356375325503
+    second: trees_hose_leaves_4
   - first:
-      213: 3818217323743452925
-    second: trees_5
+      213: 5675719405395818368
+    second: trees_hose_leaves_5
   - first:
-      213: -7523560045513598774
-    second: trees_6
+      213: -3704212833043895138
+    second: trees_hose_leaves_0
   - first:
-      213: -271311362049036883
-    second: trees_7
+      213: -3996113084148725968
+    second: trees_hose_leaves_1
+  - first:
+      213: 3850147490286066566
+    second: trees_hose_leaves_2
+  - first:
+      213: -1023169908238804300
+    second: trees_hose_leaves_3
+  - first:
+      213: -8620266858111630184
+    second: trees_hose_leaves_4
+  - first:
+      213: 6712855710620075762
+    second: trees_hose_leaves_5
+  - first:
+      213: -489863437585583199
+    second: trees_hose_leaves_6
+  - first:
+      213: -5026434844411244400
+    second: trees_hose_leaves_7
+  - first:
+      213: 3232848398834140559
+    second: trees_hose_leaves_6
+  - first:
+      213: 3103875256826159336
+    second: trees_hose_leaves_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -110,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: trees_1
+      name: trees_hose_leaves_1
       rect:
         serializedVersion: 2
         x: 137
-        y: 335
+        y: 358
         width: 188
-        height: 249
+        height: 226
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8cf8d84bf48d1230800000000000000
-      internalID: 3611188691014843535
+      spriteID: 03746018254fa88c0800000000000000
+      internalID: -3996113084148725968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_2
+      name: trees_hose_leaves_2
       rect:
         serializedVersion: 2
         x: 406
-        y: 331
+        y: 355
         width: 252
-        height: 262
+        height: 238
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e873f988e3e493f10800000000000000
-      internalID: 2249915519335348110
+      spriteID: 68bdc535eb87e6530800000000000000
+      internalID: 3850147490286066566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_3
+      name: trees_hose_leaves_3
       rect:
         serializedVersion: 2
         x: 704
-        y: 325
+        y: 347
         width: 252
-        height: 262
+        height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cefc04740fccd7840800000000000000
-      internalID: 5223556475179290604
+      spriteID: 4ba9e82b368fcc1f0800000000000000
+      internalID: -1023169908238804300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_5
+      name: trees_hose_leaves_5
       rect:
         serializedVersion: 2
         x: 128
-        y: 41
+        y: 62
         width: 188
-        height: 249
+        height: 228
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +211,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfe98f81d680df430800000000000000
-      internalID: 3818217323743452925
+      spriteID: 2f646fbd3bad82d50800000000000000
+      internalID: 6712855710620075762
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_6
+      name: trees_hose_leaves_6
       rect:
         serializedVersion: 2
         x: 397
-        y: 30
+        y: 80
         width: 264
-        height: 253
+        height: 207
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +232,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac817d80002f69790800000000000000
-      internalID: -7523560045513598774
+      spriteID: f8503398d726ddc20800000000000000
+      internalID: 3232848398834140559
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_7
+      name: trees_hose_leaves_7
       rect:
         serializedVersion: 2
         x: 683
-        y: 29
+        y: 81
         width: 265
-        height: 253
+        height: 205
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +253,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad2a81f0cb1c3cf0800000000000000
-      internalID: -271311362049036883
+      spriteID: 8e06f3ed91e231b20800000000000000
+      internalID: 3103875256826159336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trees_hose_leaves_0
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 414
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2235eecc3318ec00800000000000000
+      internalID: 930014474942100015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trees_hose_leaves_4
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 120
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4a9bc99266e02b0800000000000000
+      internalID: -5616439356375325503
       vertices: []
       indices: 
       edges: []
