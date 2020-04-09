@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2988556199274917226}
   - component: {fileID: 2988556199274917229}
   - component: {fileID: 2988556199274917227}
-  - component: {fileID: 6087220136699323068}
-  m_Layer: 8
-  m_Name: tree_obstacle
+  - component: {fileID: 3561173005447971665}
+  m_Layer: 10
+  m_Name: tree
   m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_LocalPosition: {x: -0.74, y: -0.98, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
-  - {fileID: 1115768753151784745}
+  - {fileID: 2988556198825788237}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 6085851607660778526, guid: cec6d91aca11be64b8c575a81513fa0b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,7 +105,7 @@ MonoBehaviour:
     type: 3}
   alive_tree_hose: {fileID: -4948531166531334121, guid: 25d6f3bab24bc4244a1e5d84a40db891,
     type: 3}
---- !u!58 &6087220136699323068
+--- !u!58 &3561173005447971665
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,13 +115,13 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.8505578}
+  m_Offset: {x: -0.053659935, y: -1.170762}
   serializedVersion: 2
-  m_Radius: 0.024146864
---- !u!1001 &1299605832585158744
+  m_Radius: 0.40302515
+--- !u!1001 &3750475247298122812
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -188,11 +188,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2122639472093042550, guid: 2ef4b60e89990064d98f473e4f48a7bb,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4925020097094352084, guid: 58fef2e27d3f8ee44a96d26935b49d2d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ef4b60e89990064d98f473e4f48a7bb, type: 3}
---- !u!4 &1115768753151784745 stripped
+--- !u!4 &2988556198825788237 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2122639472093042545, guid: 2ef4b60e89990064d98f473e4f48a7bb,
     type: 3}
-  m_PrefabInstance: {fileID: 1299605832585158744}
+  m_PrefabInstance: {fileID: 3750475247298122812}
   m_PrefabAsset: {fileID: 0}

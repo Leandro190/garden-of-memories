@@ -13,9 +13,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05364999, y: -0.009509563}
+  m_Offset: {x: -0.05364999, y: -0.08558512}
   serializedVersion: 2
-  m_Radius: 0.219877
+  m_Radius: 0.29595256
 --- !u!1 &6150177857657935623
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +233,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: tree_obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087220136699323068, guid: 98f76c89d0aa3604a8145f41eb176e0f,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.8505578
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087220136699323068, guid: 98f76c89d0aa3604a8145f41eb176e0f,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.07339222
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98f76c89d0aa3604a8145f41eb176e0f, type: 3}
