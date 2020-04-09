@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public int allowed_to_move;
 
     Vector2 previousPosition;
+    Vector2 startingPosition;
 
     GameObject hose_object;
     Hose hose;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
         movement_vector = Vector2.zero;
         input_vector = Vector2.zero;
+        startingPosition = this.transform.position;
 
         allowed_to_move = 0;
 
@@ -64,9 +66,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //is_grabbing = grab_pressed;
-        //grab_pressed = false;
-
         MoveCharacter();
     }
 
@@ -87,37 +86,8 @@ public class PlayerController : MonoBehaviour
         {
             if (hose_object != null)
             {
-                if (Mathf.Abs(this.transform.position.x) - Mathf.Abs(hose.lastHitObstacle.position.x) >= Mathf.Abs(this.transform.position.y) - Mathf.Abs(hose.lastHitObstacle.position.y))
-                {
-                    if (this.transform.position.x <= hose.lastHitObstacle.transform.position.x)
-                    {
-                        if (movement_vector.x == -1) { movement_vector.x = 0; }
-                        else { movement_vector.x = 1; }
-                        movement_vector.y = 0;
-                    }
-                    else
-                    {
-                        if (movement_vector.x == 1) { movement_vector.x = 0; }
-                        else { movement_vector.x = -1; }
-                        movement_vector.y = 0;
-                    }
-                }
-
-                else
-                {
-                    if (this.transform.position.y >= hose.lastHitObstacle.position.y)
-                    {
-                        movement_vector.x = 0;
-                        if (movement_vector.y == 1) { movement_vector.y = 0; }
-                        else { movement_vector.y = -1; }
-                    }
-                    else
-                    {
-                        movement_vector.x = 0;
-                        if (movement_vector.y == -1) { movement_vector.y = 0; }
-                        else { movement_vector.y = 1; }
-                    }
-                }
+                DestroyHose();
+                GoBackToStartingPoint();
             }
         }
 
@@ -125,9 +95,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Run")) { isWalking = false;}
         else { isWalking = true; }
-
-        //if (Input.GetButtonDown("Grab")) grab_pressed = true;
-        //drop_pressed = Input.GetButtonDown("Drop");
     }
 
     //Controller for player movement
@@ -206,5 +173,45 @@ public class PlayerController : MonoBehaviour
             }
         }
         Destroy(hose_object);
+    }
+
+    void GoBackToStartingPoint()
+    {
+        this.transform.position = startingPosition;
+    }
+
+    void HoseLimitMovement()
+    {
+        if (Mathf.Abs(this.transform.position.x) - Mathf.Abs(hose.lastHitObstacle.position.x) >= Mathf.Abs(this.transform.position.y) - Mathf.Abs(hose.lastHitObstacle.position.y))
+        {
+            if (this.transform.position.x <= hose.lastHitObstacle.transform.position.x)
+            {
+                if (movement_vector.x == -1) { movement_vector.x = 0; }
+                else { movement_vector.x = 1; }
+                movement_vector.y = 0;
+            }
+            else
+            {
+                if (movement_vector.x == 1) { movement_vector.x = 0; }
+                else { movement_vector.x = -1; }
+                movement_vector.y = 0;
+            }
+        }
+
+        else
+        {
+            if (this.transform.position.y >= hose.lastHitObstacle.position.y)
+            {
+                movement_vector.x = 0;
+                if (movement_vector.y == 1) { movement_vector.y = 0; }
+                else { movement_vector.y = -1; }
+            }
+            else
+            {
+                movement_vector.x = 0;
+                if (movement_vector.y == -1) { movement_vector.y = 0; }
+                else { movement_vector.y = 1; }
+            }
+        }
     }
 }

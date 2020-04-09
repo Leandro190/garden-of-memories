@@ -26,7 +26,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6150177857657935622}
   m_Layer: 0
-  m_Name: Obstacles
+  m_Name: obstacle_tree_edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,6 +229,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6085851607660778526, guid: cec6d91aca11be64b8c575a81513fa0b,
         type: 3}
+    - target: {fileID: 2988556199274917229, guid: 98f76c89d0aa3604a8145f41eb176e0f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2988556199274917231, guid: 98f76c89d0aa3604a8145f41eb176e0f,
         type: 3}
       propertyPath: m_Name
