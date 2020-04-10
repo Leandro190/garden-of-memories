@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float mRunSpeed;
     [SerializeField] private float turnSpeed = 10;
     [SerializeField] GameObject hose_prefab;
+    [SerializeField] DialogueManager diagManager;
 
     [Range(0, 1f)] public float friction = 1;
 
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     bool isWalking;
     bool is_moving;
+    bool is_dialogue;
     bool triggerEntered;
 
     public int allowed_to_move;
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
         hose = hose_prefab.GetComponent<Hose>();
         obstacles = GameObject.FindGameObjectsWithTag("obstacle");
         triggerEntered = false;
+        is_dialogue = false;
 
         isWalking = true;
 
@@ -134,19 +137,25 @@ public class PlayerController : MonoBehaviour
     private void MoveCharacter()
     {
         ////Determine movement speed
-        float moveSpeed;
+        if(!is_dialogue)
+        {
+            float moveSpeed;
 
-        moveSpeed = isWalking ? mWalkSpeed : mRunSpeed;
+            moveSpeed = isWalking ? mWalkSpeed : mRunSpeed;
 
-        rb.MovePosition(rb.position + movement_vector * moveSpeed * Time.deltaTime);
+            rb.MovePosition(rb.position + movement_vector * moveSpeed * Time.deltaTime);
+        }
     }
 
     //Animation controller
     void Animate()
     {
-        animator.SetFloat("horizontal", movement_vector.x);
-        animator.SetFloat("vertical", movement_vector.y);
-        animator.SetFloat("speed", movement_vector.sqrMagnitude);
+        if(!is_dialogue)
+        {
+            animator.SetFloat("horizontal", movement_vector.x);
+            animator.SetFloat("vertical", movement_vector.y);
+            animator.SetFloat("speed", movement_vector.sqrMagnitude);
+        }
     }
 
     void Inputs()
@@ -155,12 +164,18 @@ public class PlayerController : MonoBehaviour
         {
             DestroyHose();
         }
+
         if (Input.GetMouseButtonDown(0) && hose_object == null && triggerEntered)
         {
             triggerEntered = false;
             hose_object = Instantiate(hose_prefab) as GameObject;
             hose = hose_object.GetComponent<Hose>();
             hose.startingPoint = hose_startingPoint;
+        }
+
+        if(Input.GetMouseButtonDown(0) && is_dialogue)
+        {
+            diagManager.DisplayNextSentence();
         }
     }
 
@@ -171,10 +186,20 @@ public class PlayerController : MonoBehaviour
             hose_startingPoint = collision.transform;
             triggerEntered = true;
         }
+        
         if (collision.tag == "Goal" && hose_object != null)
         {
             print("GOAL! YOU DID IT!");
             DestroyHose();
+        }
+
+        if(collision.tag == "Dialogue")
+        {
+            collision.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+            is_dialogue = true;
+            animator.SetFloat("horizontal", 0);
+            animator.SetFloat("vertical", 0);
+            animator.SetFloat("speed", 0);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -199,5 +224,10 @@ public class PlayerController : MonoBehaviour
             }
         }
         Destroy(hose_object);
+    }
+
+    public void FinishDialogue()
+    {
+        is_dialogue = false;
     }
 }
