@@ -1,25 +1,34 @@
 fileFormatVersion: 2
-guid: c6e130f5827f84647b8e06eca0548c1c
+guid: 4e47a43c7188a85488956e6eb8dbaef9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1673732733077124514
-    second: trees_0
+      213: -8036192693967214086
+    second: PLAY BUTTON GOM_0
   - first:
-      213: 3611188691014843535
-    second: trees_1
+      213: -4958852329000145401
+    second: PLAY BUTTON GOM_1
   - first:
-      213: 2249915519335348110
-    second: trees_2
+      213: 6174759565670901326
+    second: PLAY BUTTON GOM_2
   - first:
-      213: 5223556475179290604
-    second: trees_3
+      213: -2349455562043004663
+    second: PLAY BUTTON GOM_3
   - first:
-      213: 384058854656272681
-    second: trees_4
+      213: -4038413843734039893
+    second: PLAY BUTTON GOM_4
   - first:
-      213: 3818217323743452925
-    second: trees_5
+      213: 5509023377825887819
+    second: PLAY BUTTON GOM_5
+  - first:
+      213: -1891039358889348344
+    second: PLAY BUTTON GOM_6
+  - first:
+      213: 4041986673383990819
+    second: PLAY BUTTON GOM_7
+  - first:
+      213: 8893411229278025384
+    second: PLAY BUTTON GOM_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -104,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: trees_0
+      name: PLAY BUTTON GOM_0
       rect:
         serializedVersion: 2
-        x: 406
-        y: 331
-        width: 252
-        height: 262
+        x: 583
+        y: 987
+        width: 933
+        height: 263
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5a8ef372f4b5c8e0800000000000000
-      internalID: -1673732733077124514
+      spriteID: af9ae798255b97090800000000000000
+      internalID: -8036192693967214086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_1
+      name: PLAY BUTTON GOM_1
       rect:
         serializedVersion: 2
-        x: 704
-        y: 325
-        width: 252
-        height: 262
+        x: 40
+        y: 641
+        width: 830
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8cf8d84bf48d1230800000000000000
-      internalID: 3611188691014843535
+      spriteID: 70ee354741e9e2bb0800000000000000
+      internalID: -4958852329000145401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_2
+      name: PLAY BUTTON GOM_2
       rect:
         serializedVersion: 2
-        x: 683
-        y: 29
-        width: 265
-        height: 253
+        x: 142
+        y: 312
+        width: 1526
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,71 +169,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e873f988e3e493f10800000000000000
-      internalID: 2249915519335348110
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trees_3
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 31
-        width: 264
-        height: 252
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cefc04740fccd7840800000000000000
-      internalID: 5223556475179290604
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trees_4
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 41
-        width: 191
-        height: 249
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92961a45e73745500800000000000000
-      internalID: 384058854656272681
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trees_5
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 335
-        width: 191
-        height: 249
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfe98f81d680df430800000000000000
-      internalID: 3818217323743452925
+      spriteID: e4662451c1721b550800000000000000
+      internalID: 6174759565670901326
       vertices: []
       indices: 
       edges: []
@@ -241,7 +187,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
+  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
