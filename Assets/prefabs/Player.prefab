@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1031509745989687263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.122062, y: 0.35227895, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: ec7d1468243a0b7468689e2732fc34ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654aba5fa2b8a5f458c5ba359ad91a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mWalkSpeed: 2
+  mWalkSpeed: 4
   mRunSpeed: 0
   turnSpeed: 10
   hose_prefab: {fileID: 911005278514529119, guid: a93d59b7852f2d142a78b6f1638ea6f0,
